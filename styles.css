@@ -112,7 +112,7 @@ body {
     }
 
     .why {
-        bottom: 10px;
+        bottom: 0.1px;
         padding: 7.5px;
         background-color: black;
         border-radius: 10px;
