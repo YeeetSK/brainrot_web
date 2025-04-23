@@ -89,6 +89,10 @@ body {
     background-color: #ff8c1a;
 }
 
+.iqScore {
+    color: red;
+}
+
 /* Mobile Layout: Stack */
 @media (max-width: 768px) {
     .play-again {
