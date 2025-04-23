@@ -25,7 +25,7 @@ const imageList = [
     "images/ChatGPT_Image_Apr_212C_05_13_21_PM.webp",
     "images/Matteo.webp",
     "images/Mousini_Picolini.webp",
-    "images/Olegini%2C_der_Zauberini.webp",
+    "images/olegini.webp",
     "images/OrangutanAnanas.webp",
     "images/Piccione_Macchina.webp",
     "images/Polpetta.webp",
