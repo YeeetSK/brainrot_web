@@ -53,8 +53,52 @@ body {
     text-align: center;
 }
 
+#result {
+    text-align: center;
+    display: none;
+}
+
+#result .brainrot-img {
+    width: 500px;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+#result p {
+    font-size: 2rem;
+    margin-top: 20px;
+}
+
+
+/* Add play again button styling */
+.play-again {
+    background-color: #f17b0c;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: transform 0.2s ease;
+}
+
+.play-again:hover {
+    transform: scale(1.05);
+    background-color: #ff8c1a;
+}
+
 /* Mobile Layout: Stack */
 @media (max-width: 768px) {
+    .play-again {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+    #result .brainrot-img {
+        width: 230px;
+        height: 230px;
+    }
     .container {
         flex-direction: column;
     }
