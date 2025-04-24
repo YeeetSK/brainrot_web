@@ -1,42 +1,40 @@
 const imageList = [
-    'images/brbrpatatim.webp',
-    'images/tralala.webp',
-    'images/trippitroppi.webp',
-    'images/capuchino.webp',
-    'images/balerina.webp',
-    'images/Comb3.webp',
-    'images/Trulimero_trulicina.webp',
-    'images/Trulimero_Trulichina.webp',
-    'images/Chimpanzeenee_Rubbishineenee.webp',
-    'images/Bombini_Gusini.webp',
-    'images/Skibidi_Pollastra_Bombastra.webp',
-    'images/Aeromucca.webp',
-    'images/BallerinoLololo.webp',
-    'images/Images_29.webp',
-    'images/Bobrini_Cactusini_Su_Saturno.webp',
-    'images/Bombardiro_Crocodilo.webp',
-    'images/Bomboclat_Crococlat.webp',
-    'images/Burbaloni.webp',
-    'images/ChimpanziniBananini.webp',
-    'images/Coccodrill.webp',
-    'images/CrocoPotato.webp',
-    'images/Gambero_Spero.webp',
-    'images/ChatGPT_Image_Apr_212C_05_13_21_PM.webp',
-    'images/Matteo.webp',
-    'images/Mousini_Picolini.webp',
-    'images/olegini.webp',
-    'images/OrangutanAnanas.webp',
-    'images/Piccione_Macchina.webp',
-    'images/Polpetta.webp',
-    'images/Rugginato_LupoGT.webp',
-    'images/Sovieto_Elephino.webp',
-    'images/Stickinisisis.webp',
-    'images/Screenshot_2025-04-11_155955.webp',
-    'images/Tracotucotulu_delapeladusduz.webp',
-    'images/Tric_Trac_Baraboom.webp',
+    { src: 'images/brbrpatatim.webp', label: 'Coming soon' },
+    { src: 'images/tralala.webp', label: 'Coming soon' },
+    { src: 'images/trippitroppi.webp', label: 'Coming soon' },
+    { src: 'images/capuchino.webp', label: 'Coming soon' },
+    { src: 'images/balerina.webp', label: 'Coming soon' },
+    { src: 'images/Comb3.webp', label: 'Coming soon' },
+    { src: 'images/Trulimero_trulicina.webp', label: 'Coming soon' },
+    { src: 'images/Trulimero_Trulichina.webp', label: 'Coming soon' },
+    { src: 'images/Chimpanzeenee_Rubbishineenee.webp', label: 'Coming soon' },
+    { src: 'images/Bombini_Gusini.webp', label: 'Coming soon' },
+    { src: 'images/Skibidi_Pollastra_Bombastra.webp', label: 'Coming soon' },
+    { src: 'images/Aeromucca.webp', label: 'Coming soon' },
+    { src: 'images/BallerinoLololo.webp', label: 'Coming soon' },
+    { src: 'images/Images_29.webp', label: 'Coming soon' },
+    { src: 'images/Bobrini_Cactusini_Su_Saturno.webp', label: 'Coming soon' },
+    { src: 'images/Bombardiro_Crocodilo.webp', label: 'Coming soon' },
+    { src: 'images/Bomboclat_Crococlat.webp', label: 'Coming soon' },
+    { src: 'images/Burbaloni.webp', label: 'Coming soon' },
+    { src: 'images/ChimpanziniBananini.webp', label: 'Coming soon' },
+    { src: 'images/Coccodrill.webp', label: 'Coming soon' },
+    { src: 'images/CrocoPotato.webp', label: 'Coming soon' },
+    { src: 'images/Gambero_Spero.webp', label: 'Coming soon' },
+    { src: 'images/ChatGPT_Image_Apr_212C_05_13_21_PM.webp', label: 'Coming soon' },
+    { src: 'images/Matteo.webp', label: 'Coming soon' },
+    { src: 'images/Mousini_Picolini.webp', label: 'Coming soon' },
+    { src: 'images/olegini.webp', label: 'Coming soon' },
+    { src: 'images/OrangutanAnanas.webp', label: 'Coming soon' },
+    { src: 'images/Piccione_Macchina.webp', label: 'Coming soon' },
+    { src: 'images/Polpetta.webp', label: 'Coming soon' },
+    { src: 'images/Rugginato_LupoGT.webp', label: 'Coming soon' },
+    { src: 'images/Sovieto_Elephino.webp', label: 'Coming soon' },
+    { src: 'images/Stickinisisis.webp', label: 'Coming soon' },
+    { src: 'images/Screenshot_2025-04-11_155955.webp', label: 'Coming soon' },
+    { src: 'images/Tracotucotulu_delapeladusduz.webp', label: 'Coming soon' },
+    { src: 'images/Tric_Trac_Baraboom.webp', label: 'Coming soon' },
 ];
-
-
 
 const leftImage = document.getElementById('leftImage');
 const rightImage = document.getElementById('rightImage');
@@ -46,7 +44,7 @@ function getPairKey(img1, img2) {
     return [img1, img2].sort().join('|');
 }
 
-function getImageName(src) {
+function normalizeSrc(src) {
     const url = new URL(src, window.location.href);
     return url.pathname.startsWith('/') 
         ? url.pathname.substring(1)
@@ -59,10 +57,9 @@ function endGame(winnerSrc) {
     const resultDiv = document.getElementById('result');
     resultDiv.style.display = 'block';
     document.getElementById('winnerImage').src = winnerSrc;
-    document.getElementById('iqScore').textContent = Math.floor(Math.random() * 71) + 10; // 10-80
+    document.getElementById('iqScore').textContent = Math.floor(Math.random() * 71) + 10;
 }
 
-// reset the game data
 function resetGame() {
     foughtPairs.clear();
     document.querySelector('.container').style.display = 'flex';
@@ -71,25 +68,30 @@ function resetGame() {
     initializeImages();
 }
 
-// event listener for play again button
 document.getElementById('playAgain').addEventListener('click', resetGame);
 
 function handleClick(keptElement, replacedElement) {
-    const kept = getImageName(keptElement.src);
-    const replaced = getImageName(replacedElement.src);
+    const kept = normalizeSrc(keptElement.src);
+    const replaced = normalizeSrc(replacedElement.src);
     const pairKey = getPairKey(kept, replaced);
     foughtPairs.add(pairKey);
 
     const available = imageList.filter(img => {
-        const imgKey = getPairKey(kept, img);
-        return img !== kept && !foughtPairs.has(imgKey);
+        const currentKey = getPairKey(kept, img.src);
+        return img.src !== kept && !foughtPairs.has(currentKey);
     });
 
     if (available.length === 0) {
         endGame(keptElement.src);
     } else {
         const newImage = available[Math.floor(Math.random() * available.length)];
-        replacedElement.src = newImage;
+        replacedElement.src = newImage.src;
+        replacedElement.parentNode.querySelector('.image-label').textContent = newImage.label;
+        
+        // Prevent immediate duplicate matchup
+        const newSrc = normalizeSrc(newImage.src);
+        const currentPair = getPairKey(kept, newSrc);
+        foughtPairs.add(currentPair);
     }
 }
 
@@ -97,9 +99,17 @@ leftImage.addEventListener('click', () => handleClick(leftImage, rightImage));
 rightImage.addEventListener('click', () => handleClick(rightImage, leftImage));
 
 function initializeImages() {
-    const shuffled = [...imageList].sort(() => Math.random() - 0.5);
-    leftImage.src = shuffled[0];
-    rightImage.src = shuffled[1];
+    let first, second;
+    do {
+        const shuffled = [...imageList].sort(() => Math.random() - 0.5);
+        first = shuffled[0];
+        second = shuffled[1];
+    } while (first.src === second.src);
+
+    leftImage.src = first.src;
+    leftImage.parentNode.querySelector('.image-label').textContent = first.label;
+    rightImage.src = second.src;
+    rightImage.parentNode.querySelector('.image-label').textContent = second.label;
 }
 
 window.addEventListener('DOMContentLoaded', initializeImages);
