@@ -53,7 +53,6 @@ function normalizeSrc(src) {
 
 function endGame(winnerSrc) {
     document.querySelector('.container').style.display = 'none';
-    document.querySelector('.why').style.display = 'none';
     const resultDiv = document.getElementById('result');
     resultDiv.style.display = 'block';
     document.getElementById('winnerImage').src = winnerSrc;
@@ -63,7 +62,6 @@ function endGame(winnerSrc) {
 function resetGame() {
     foughtPairs.clear();
     document.querySelector('.container').style.display = 'flex';
-    document.querySelector('.why').style.display = 'block';
     document.getElementById('result').style.display = 'none';
     initializeImages();
 }
