@@ -5,6 +5,13 @@ body {
     color: white;
     font-family: Arial, sans-serif;
     overflow: hidden;
+    /* for phones */
+    touch-action: none; /* Prevent touch gestures */
+    overscroll-behavior: none; /* Prevent pull-to-refresh */
+}
+
+html {
+    touch-action: manipulation;
 }
 
 .wrapper {
@@ -16,6 +23,7 @@ body {
     padding: 20px;
     box-sizing: border-box;
     position: relative;
+    touch-action: none; /* Prevent touch gestures */
 }
 
 .container {
