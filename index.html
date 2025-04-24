@@ -8,26 +8,31 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="container">
-    <div class="image-container">
-      <img id="leftImage" class="brainrot-img" src="" alt="Left Option" />
-      <div class="image-label"></div>
+  <div class="wrapper">
+    <div class="container">
+      <div class="image-container">
+        <img id="leftImage" class="brainrot-img" src="" alt="Left Option" />
+        <div class="image-label"></div>
+      </div>
+      <div class="vs-wrapper">
+        <div class="vs-label">VS</div>
+      </div>
+      <div class="image-container">
+        <img id="rightImage" class="brainrot-img" src="" alt="Right Option" />
+        <div class="image-label"></div>
+      </div>
     </div>
-    <div class="vs-label">VS</div>
-    <div class="image-container">
-      <img id="rightImage" class="brainrot-img" src="" alt="Right Option" />
-      <div class="image-label"></div>
+
+    <div id="result" style="display: none;">
+      <p>Tvoj favourite brainrot je</p>
+      <img id="winnerImage" class="brainrot-img" src="" alt="Winner" />
+      <p>Tvoje IQ: <span id="iqScore" class="iqScore">0</span></p>
+      <button id="playAgain" class="play-again">Hrat Znova</button>
     </div>
+
+    <p class="why">Nepytajte sa prečo</p>
   </div>
 
-  <div id="result" style="display: none;">
-    <p>Tvoj favourite brainrot je</p>
-    <img id="winnerImage" class="brainrot-img" src="" alt="Winner" />
-    <p>Tvoje IQ: <span id="iqScore" class="iqScore">0</span></p>
-    <button id="playAgain" class="play-again">Hrat Znova</button>
-  </div>
-
-  <p class="why">Nepytajte sa prečo</p>
   <script src="script.js"></script>
 </body>
 </html>

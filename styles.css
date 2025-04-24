@@ -1,38 +1,52 @@
-/* Reset and Base Styling */
 body {
     margin: 0;
     padding: 0;
     background-color: #121212;
-    color: #ffffff;
+    color: white;
     font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+.wrapper {
+    height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+    position: relative;
 }
 
 .container {
     display: flex;
-    flex-direction: row;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     gap: 20px;
-    flex-wrap: wrap;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .image-container {
     position: relative;
-    display: inline-block;
+    flex: 0 1 auto;
+    width: 40vmin;
+    height: 40vmin;
+    min-width: 200px;
+    min-height: 200px;
+    max-width: 400px;
+    max-height: 400px;
 }
 
 .brainrot-img {
-    width: 500px;
-    height: 500px;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     border-radius: 12px;
     cursor: pointer;
     transition: transform 0.2s ease;
+    user-select: none;
 }
 
 .brainrot-img:hover {
@@ -44,105 +58,89 @@ body {
     bottom: 15px;
     left: 50%;
     transform: translateX(-50%);
-    background-color: rgba(0, 0, 0, 0.7);
-    color: white;
-    padding: 5px 15px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 8px 20px;
     border-radius: 20px;
     font-size: 1.2rem;
-    font-weight: bold;
-    pointer-events: none;
     white-space: nowrap;
 }
 
-.vs-label {
-    font-size: 2rem;
-    font-weight: bold;
+.vs-wrapper {
+    font-size: 2.5rem;
     color: #f17b0c;
-}
-
-.why {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 0.75rem;
-    text-align: center;
+    font-weight: bold;
+    margin: 0 15px;
 }
 
 #result {
-    text-align: center;
     display: none;
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
 }
 
 #result .brainrot-img {
-    width: 500px;
-    height: 500px;
-    object-fit: cover;
-    border-radius: 12px;
+    width: 50vmin;
+    height: 50vmin;
+    max-width: 400px;
+    max-height: 400px;
 }
 
 #result p {
-    font-size: 2rem;
-    margin-top: 20px;
+    font-size: 1.5rem;
+    margin: 20px 0;
 }
 
 .play-again {
-    background-color: #f17b0c;
+    margin-top: 20px;
+    padding: 12px 24px;
+    font-size: 1.1rem;
+    background: #f17b0c;
     color: white;
     border: none;
-    padding: 15px 30px;
     border-radius: 25px;
-    font-size: 1.2rem;
     cursor: pointer;
-    margin-top: 20px;
-    transition: transform 0.2s ease;
+    transition: all 0.2s ease;
 }
 
-.play-again:hover {
-    transform: scale(1.05);
-    background-color: #ff8c1a;
-}
-
-.iqScore {
-    color: red;
+.why {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 8px 16px;
+    font-size: 0.8rem;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    text-align: center;
+    width: max-content;
 }
 
 @media (max-width: 768px) {
-    .play-again {
-        padding: 10px 20px;
-        font-size: 1rem;
-    }
-    #result .brainrot-img {
-        width: 230px;
-        height: 230px;
-    }
     .container {
         flex-direction: column;
+        gap: 10px;
     }
-    .vs-label {
-        margin: 10px 0;
-    }
-    .why {
-        bottom: 0.1px;
-        padding: 7.5px;
-        background-color: black;
-        border-radius: 10px;
-        opacity: 0.9;
-    }
-    .brainrot-img {
-        width: 230px;
-        height: 230px;
-    }
-    .image-label {
-        font-size: 0.9rem;
-        padding: 3px 10px;
-        bottom: 10px;
-    }
-}
 
-/* Prevent zooming on input focus */
-@media (max-width: 768px) {
-    input, textarea, select {
-        font-size: 16px;
+    .vs-wrapper {
+        margin: 10px 0;
+        font-size: 2rem;
+    }
+
+    .image-container {
+        width: 60vmin;
+        height: 60vmin;
+        min-width: 180px;
+        min-height: 180px;
+    }
+
+    #result .brainrot-img {
+        width: 60vmin;
+        height: 60vmin;
+    }
+
+    .why {
+        bottom: 10px;
+        font-size: 0.7rem;
     }
 }
