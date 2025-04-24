@@ -40,15 +40,17 @@ const leftImage = document.getElementById('leftImage');
 const rightImage = document.getElementById('rightImage');
 const foughtPairs = new Set();
 
+function normalizeSrc(src) {
+    return src.split('/').pop();
+}
+
 function getPairKey(img1, img2) {
     return [img1, img2].sort().join('|');
 }
 
-function normalizeSrc(src) {
-    const url = new URL(src, window.location.href);
-    return url.pathname.startsWith('/') 
-        ? url.pathname.substring(1)
-        : url.pathname;
+function checkAllPairsFought() {
+    const totalPairs = (imageList.length * (imageList.length - 1)) / 2;
+    return foughtPairs.size >= totalPairs;
 }
 
 function endGame(winnerSrc) {
@@ -66,35 +68,26 @@ function resetGame() {
     initializeImages();
 }
 
-document.getElementById('playAgain').addEventListener('click', resetGame);
-
 function handleClick(keptElement, replacedElement) {
     const kept = normalizeSrc(keptElement.src);
     const replaced = normalizeSrc(replacedElement.src);
-    const pairKey = getPairKey(kept, replaced);
-    foughtPairs.add(pairKey);
+    foughtPairs.add(getPairKey(kept, replaced));
 
     const available = imageList.filter(img => {
-        const currentKey = getPairKey(kept, img.src);
-        return img.src !== kept && !foughtPairs.has(currentKey);
+        const imgSrc = normalizeSrc(img.src);
+        const currentKey = getPairKey(kept, imgSrc);
+        return imgSrc !== kept && !foughtPairs.has(currentKey);
     });
 
-    if (available.length === 0) {
+    if (available.length === 0 || checkAllPairsFought()) {
         endGame(keptElement.src);
     } else {
         const newImage = available[Math.floor(Math.random() * available.length)];
         replacedElement.src = newImage.src;
         replacedElement.parentNode.querySelector('.image-label').textContent = newImage.label;
-        
-        // Prevent immediate duplicate matchup
-        const newSrc = normalizeSrc(newImage.src);
-        const currentPair = getPairKey(kept, newSrc);
-        foughtPairs.add(currentPair);
+        foughtPairs.add(getPairKey(kept, normalizeSrc(newImage.src)));
     }
 }
-
-leftImage.addEventListener('click', () => handleClick(leftImage, rightImage));
-rightImage.addEventListener('click', () => handleClick(rightImage, leftImage));
 
 function initializeImages() {
     let first, second;
@@ -108,6 +101,12 @@ function initializeImages() {
     leftImage.parentNode.querySelector('.image-label').textContent = first.label;
     rightImage.src = second.src;
     rightImage.parentNode.querySelector('.image-label').textContent = second.label;
+
+    foughtPairs.add(getPairKey(normalizeSrc(first.src), normalizeSrc(second.src)));
 }
+
+document.getElementById('playAgain').addEventListener('click', resetGame);
+leftImage.addEventListener('click', () => handleClick(leftImage, rightImage));
+rightImage.addEventListener('click', () => handleClick(rightImage, leftImage));
 
 window.addEventListener('DOMContentLoaded', initializeImages);
