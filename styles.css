@@ -6,9 +6,17 @@ body {
     font-family: Arial, sans-serif;
     overflow: hidden;
     /* for phones */
-    touch-action: none; /* Prevent touch gestures */
-    overscroll-behavior: none; /* Prevent pull-to-refresh */
+    touch-action: none; /* touch gestures */
+    overscroll-behavior: none; /* pull-to-refresh */
 }
+
+/* disable selecting */
+* {
+    user-select: none;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none;     /* IE 10+ */
+  }
+  
 
 html {
     touch-action: manipulation;
@@ -23,7 +31,7 @@ html {
     padding: 20px;
     box-sizing: border-box;
     position: relative;
-    touch-action: none; /* Prevent touch gestures */
+    touch-action: none; /* touch gestures */
 }
 
 .container {
