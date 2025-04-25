@@ -63,7 +63,7 @@ function endGame(winnerSrc) {
     playAgainBtn.disabled = true; // disable immediately so no misslicks
     setTimeout(() => {
       playAgainBtn.disabled = false; // re-enable after 3s
-    }, 1500);
+    }, 2000);
   }
   
 
