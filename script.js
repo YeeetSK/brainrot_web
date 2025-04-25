@@ -58,7 +58,14 @@ function endGame(winnerSrc) {
     resultDiv.style.display = 'block';
     document.getElementById('winnerImage').src = winnerSrc;
     document.getElementById('iqScore').textContent = Math.floor(Math.random() * 71) + 10;
-}
+  
+    const playAgainBtn = document.getElementById('playAgain');
+    playAgainBtn.disabled = true; // disable immediately so no misslicks
+    setTimeout(() => {
+      playAgainBtn.disabled = false; // re-enable after 3s
+    }, 1500);
+  }
+  
 
 function resetGame() {
     foughtPairs.clear();

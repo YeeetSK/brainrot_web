@@ -114,6 +114,12 @@ html {
     transition: all 0.2s ease;
 }
 
+.play-again:disabled {
+    background: gray;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
 @media (max-width: 768px) {
     .container {
         flex-direction: column;
